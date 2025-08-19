@@ -20,11 +20,11 @@
                var guess = Number(document.getElementById("guess").value);
 
                if (guess === dNumber) {
-                  document.getElementById("result").innerHTML = "Result: You are correct! :D";
+                  document.getElementById("result").innerHTML = "You are correct! :D";
                } else if (guess < dNumber) {
-                  document.getElementById("result").innerHTML = "Result: Higher";
+                  document.getElementById("result").innerHTML = "Higher";
                } else if (guess > dNumber) {
-                  document.getElementById("result").innerHTML = "Result: Lower";
+                  document.getElementById("result").innerHTML = "Lower";
                }
 
             }     
@@ -32,6 +32,8 @@
 
 
 </script>
+
+      <p> Result: <span id= "result"></span></p>
 
 </body>
 </html>
