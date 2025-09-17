@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="guess_game.css">
+</head>
+
+
+<h1>guess my word boiii ;-;</h1>
+<p id="wordDisplay"></p>
+<input type="text" id="guessInput" maxlength="1">
+<button onclick="makeGuess()">Guess</button>
+<p id="message"></p>
+<p id="attempts"></p>
+
+<script>
+  let secretWord = ["c", "l", "u","m", "s","y", " ", "c","e","a","n","a"];
+  let guessedWord = ["_", "_", "_", "_", "_", "_", "-", "_", "_","_","_","_"];
+  let remainingAttempts = 10;
+
+  document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+  document.getElementById("attempts").textContent = "Attempts Remaining: " + remainingAttempts;
+
+  function makeGuess() {
+    let guess = document.getElementById("guessInput").value.toLowerCase();
+    let correct = false;
+
+    for (let i = 0; i < secretWord.length; i++) {
+      if (secretWord[i] === guess) {
+        guessedWord[i] = guess;
+        correct = true;
+      }
+    }
+
+    if (!correct) {
+      remainingAttempts--;
+    }
+
+    document.getElementById("wordDisplay").textContent = guessedWord.join(" ");
+    document.getElementById("message").textContent = correct ? "✅ wow so galing :O " : "❌ iz okay, guess again!";
+    document.getElementById("attempts").textContent = "Attempts Remaining: " + remainingAttempts;
+    document.getElementById("guessInput").value = "";
+
+    if (remainingAttempts <= 0) {
+      document.getElementById("message").textContent = "ayayayy, game over!";
+    }
+  }
+
+</script>
