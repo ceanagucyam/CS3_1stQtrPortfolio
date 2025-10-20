@@ -1,0 +1,69 @@
+* {
+    box-sizing: border-box;
+}
+
+h1, footer {
+    color: rgb(67, 133, 219);
+    background-color: hsl(113, 45%, 68%);
+    background-position: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    
+}
+
+/*part D */
+
+#main-title {
+    text-transform: uppercase;
+    word-spacing: 10px;
+    letter-spacing: -3px;
+    margin-bottom: 0;
+    text-shadow: 2px 2px 5px #e498ca;
+
+}
+
+/*part F*/
+
+section > img {
+    display: block;
+    width: 25vw;
+    height: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*part J*/
+.container ul {
+
+    list-style-type: none; /* removes bullets */
+  
+    clear: left; /* removes effect of float:left */
+  
+    padding: 0; /* removes the spaces surrounding the li/s */
+  
+  }
+  
+  
+  .container ul li {
+  
+    width: 150px;
+  
+    padding: 5px;
+  
+    background-color: cornsilk;
+  
+    text-align: center;
+  
+    display: inline-block;
+  
+    border-radius: 0px 25px;
+  
+  }
+
+
+
+
+
+
