@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+      <title>Centralized Club Application Form </title>
+
+<style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #a7bce9;
+        color: #1e46a5;
+    }
+
+    form {
+        width: 650px;
+        margin: auto;
+        padding: 20px;
+        background-color: #e9de9f;
+        border-radius: 8px;
+        border: 1px solid #1e46a5;
+    }
+
+    fieldset {
+        margin-bottom: 15px;
+        border: 1px solid #a0b4f6;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    legend {
+        font-weight: bold;
+        padding: 0 10px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 6px;
+        border: 1px solid #6d82d7;
+        border-radius: 4px;
+        margin-top: 5px;
+    }
+    
+    /* focus pseudo-class */
+    input:focus, select:focus, textarea:focus {
+        border: 2px solid #0246bc;
+        background-color: #eef7ff;
+        outline: none;
+    }
+
+    /* empty fields on blur */
+    .error {
+        border: 2px solid rgb(248, 56, 53);
+        background-color: #ffe3e3;
+    }
+
+    .buttons {
+        text-align: center;
+    }
+
+    .button {
+        padding: 10px 15px;
+        width: 120px;
+        margin: 5px;
+        font-size: 15px;
+    }
+</style>
+
+<script> 
+    function confirmSubmit() {
+        return confirm("Are you sure you want to submit this application?");
+    }
+
+    function confirmReset() {
+        return confirm("Are you sure you want to reset all inputs?");
+    }
+
+    function checkEmpty(element) {
+        if (element.value.trim() === "") {
+            element.classList.add("error");
+        } else {
+            element.classList.remove("error");
+        }
+    }    
+</script>
+</head>
+
+<body>
+
+<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
+
+    <!-- Fieldset for 1-4 -->
+    <fieldset>
+      <legend>Personal Information</legend>
+
+      <label> StudentID:
+      <input type="number" name="student_id" required onBlur="checkEmpty(this)"> 
+      </label>
+
+      <label> Full Name:
+        <input type="text" name="full_name" required onBlur="checkEmpty(this)"> 
+      </label>
+
+    <label> Birthday:
+        <input type="date" name="birthday" required onBlur="checkEmpty(this)"> 
+    </label>
+
+    <label>
+        Email Address:
+        <input type="email" name="email" required onBlur="checkEmpty(this)"> 
+    </label>
+    </fieldset>
+
+    <!-- Fieldset for 5-8 -->
+    <fieldset>
+    <legend>Club Details</legend>
+
+    <label>
+        Mobile Phone:
+        <input type="text" name="mobile" required onBlur="checkEmpty(this)"> 
+    </label>
+
+    <label>
+        Grade Level:
+        <select id="grade_level" name="gradelevel" required onBlur="checkEmpty(this)"> 
+        <option value =""> Select </option>
+        <option value ="G7"> Grade 7 </option>
+        <option value ="G8"> Grade 8 </option>
+        <option value ="G9"> Grade 9 </option>
+        <option value ="G10"> Grade 10 </option>
+        <option value ="G11"> Grade 11 </option>
+        <option value ="G12"> Grade 12</option>
+        </select>
+    </label>
+
+    <label>
+        Intern / Extern:
+    </label>
+    
+        <label for="intern">Intern</label> 
+        <input type="radio" id="intern" name="internorextern" value="Intern" required>
+
+        <label for="extern">Extern</label>
+        <input type="radio" id="extern" name="internorextern" value="Extern" required>
+
+    <label> 
+        Preferred Organization / Club:
+        <select id="prefclub" name="club" required onBlur ="checkEmpty(this)">
+            <option value=""> Select </option>
+            <option value="Film">Celluloid</option>
+            <option value="Swimming">Flux</option>
+            <option value="Dance">SaGaLa</option>
+            <option value="Music Ensemble">BRAVURA</option>
+            <option value="Social Action">AKSIS</option>
+        </select>
+    </label>
+
+    <label>
+        Why do you want to join? :
+        <textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea>
+    </label>
+
+    </fieldset>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+
+   </form>
+
+   </body>
+   </html>
