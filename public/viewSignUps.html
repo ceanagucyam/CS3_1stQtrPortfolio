@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Signups</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a7bce9;
+    color: #1e46a5;
+}
+
+h2 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    background-color: #ffe9f2;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+th, td {
+    border: 1px solid #2f265d;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #ede493;
+    color: rgb(78, 123, 191);
+}
+
+.controls {
+    width: 650px;
+    margin: auto;
+    padding: 10px 0;
+}
+
+.message {
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+</style>
+
+<script>
+    
+    let allSignUps = [];
+
+    function loadSignUps() {
+        allSignUps = JSON.parse(localStorage.getItem("signUps")) || [];
+        displaySignUps("ALL");
+    }
+
+    function displaySignUps(club) {
+        const tbody = document.getElementById("tableBody");
+        const total = document.getElementById("total");
+
+    tbody.innerHTML = "";
+
+    let filtered = club === "ALL"
+        ? allSignUps
+        : allSignUps.filter(s => s.club === club);
+
+    if (filtered.length === 0) {
+        total.textContent = "Total Signups : 0";
+        tbody.innerHTML = `<tr><td colspan="7">No sign-ups found for the selected club.</td></tr>`;
+        return;
+    }
+
+    filtered.forEach(s => {
+        tbody.innerHTML += `
+        <tr>
+            <td>${s.student_id}</td>
+            <td>${s.full_name}</td>
+            <td>${s.gradelevel}</td>
+            <td>${s.email}</td>
+            <td>${s.mobile}</td>
+            <td>${s.internorextern}</td>
+            <td>${s.club}</td>
+        </tr>`;
+    });
+
+    total.textContent = "Total Signups : " + filtered.length;
+    }
+
+    function filterClub() {
+        const selected = document.getElementById("clubFilter").value;
+        displaySignUps(selected);
+    }
+
+</script>
+</head>
+
+<body onload="loadSignUps()">
+
+<h2>Club Sign-Ups</h2>
+
+<div class="controls">
+<label>
+Select your Club
+    <select id="clubFilter" onchange="filterClub()">
+        <option value="">Select</option>
+        <option value="ALL">ALL</option>
+        <option value="Film">Celluloid</option>
+        <option value="Swimming">Flux</option>
+        <option value="Dance">SaGaLa</option>
+        <option value="Music Ensemble">BRAVURA</option>
+        <option value="Social Action">AKSIS</option>
+    </select>
+</label>
+</div>
+
+<p id="total" class="message"></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Full Name</th>
+            <th>Grade</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Intern | Extern</th>
+            <th>Club</th>
+        </tr>
+    </thead>
+
+<tbody id="tableBody"></tbody>
+</table>
+
+<a href="signUp.html">Back to Signup</a>
+
+</body>
+</html>
