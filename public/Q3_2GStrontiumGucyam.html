@@ -2,75 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-      <title>Centralized Club Application Form </title>
+    <title>Centralized Club Application Form</title>
 
 <style>
-        body {
-        font-family: Arial, sans-serif;
-        background-color: #a7bce9;
-        color: #1e46a5;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #a7bce9;
+    color: #1e46a5;
+}
 
-    form {
-        width: 650px;
-        margin: auto;
-        padding: 20px;
-        background-color: #e9de9f;
-        border-radius: 8px;
-        border: 1px solid #1e46a5;
-    }
+form {
+    width: 650px;
+    margin: auto;
+    padding: 20px;
+    background-color: #e9de9f;
+    border-radius: 8px;
+    border: 1px solid #1e46a5;
+}
 
-    fieldset {
-        margin-bottom: 15px;
-        border: 1px solid #a0b4f6;
-        padding: 15px;
-        border-radius: 5px;
-    }
+fieldset {
+    margin-bottom: 15px;
+    border: 1px solid #a0b4f6;
+    padding: 15px;
+    border-radius: 5px;
+}
 
-    legend {
-        font-weight: bold;
-        padding: 0 10px;
-    }
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
 
-    label {
-        display: block;
-        margin-bottom: 10px;
-    }
+label {
+    display: block;
+    margin-bottom: 10px;
+}
 
-    input, select, textarea {
-        width: 100%;
-        padding: 6px;
-        border: 1px solid #6d82d7;
-        border-radius: 4px;
-        margin-top: 5px;
-    }
-    
-    /* focus pseudo-class */
-    input:focus, select:focus, textarea:focus {
-        border: 2px solid #0246bc;
-        background-color: #eef7ff;
-        outline: none;
-    }
+input, select, textarea {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #6d82d7;
+    border-radius: 4px;
+    margin-top: 5px;
+}
 
-    /* empty fields on blur */
-    .error {
-        border: 2px solid rgb(248, 56, 53);
-        background-color: #ffe3e3;
-    }
+input:focus, select:focus, textarea:focus {
+    border: 2px solid #0246bc;
+    background-color: #eef7ff;
+    outline: none;
+}
 
-    .buttons {
-        text-align: center;
-    }
-
-    .button {
-        padding: 10px 15px;
-        width: 120px;
-        margin: 5px;
-        font-size: 15px;
-    }
+.error {
+    border: 2px solid rgb(248, 56, 53);
+    background-color: #ffe3e3;
+}
 </style>
 
-<script> 
+<script>
+
     function confirmSubmit() {
         return confirm("Are you sure you want to submit this application?");
     }
@@ -85,57 +73,87 @@
         } else {
             element.classList.remove("error");
         }
-    }    
+    }
+
+    function saveSignup(event) {
+        event.preventDefault();
+
+    if (!confirmSubmit()) return;
+
+    let signupData = {
+        student_id: document.querySelector("[name='student_id']").value,
+        full_name: document.querySelector("[name='full_name']").value,
+        birthday: document.querySelector("[name='birthday']").value,
+        email: document.querySelector("[name='email']").value,
+        mobile: document.querySelector("[name='mobile']").value,
+        gradelevel: document.querySelector("[name='gradelevel']").value,
+        internorextern: document.querySelector("[name='internorextern']:checked").value,
+        club: document.querySelector("[name='club']").value,
+        reason: document.querySelector("[name='reason']").value
+    };
+
+    let signUps = JSON.parse(localStorage.getItem("signUps")) || [];
+    signUps.push(signupData);
+    localStorage.setItem("signUps", JSON.stringify(signUps));
+
+    alert("You have successfully submitted your application!");
+    document.querySelector("form").reset();
+}
+
+function viewSignUps() {
+    window.location.href = "viewSignUps.html";
+}
 </script>
 </head>
 
 <body>
 
-<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
+<form onsubmit="saveSignup(event)" onreset="return confirmReset()">
 
-    <!-- Fieldset for 1-4 -->
-    <fieldset>
-      <legend>Personal Information</legend>
+<fieldset>
+<legend>Personal Information</legend>
 
-      <label> StudentID:
-      <input type="number" name="student_id" required onBlur="checkEmpty(this)"> 
-      </label>
+<label>
+Student ID:
+<input type="number" name="student_id" required onblur="checkEmpty(this)">
+</label>
 
-      <label> Full Name:
-        <input type="text" name="full_name" required onBlur="checkEmpty(this)"> 
-      </label>
+<label>
+Full Name:
+<input type="text" name="full_name" required onblur="checkEmpty(this)">
+</label>
 
-    <label> Birthday:
-        <input type="date" name="birthday" required onBlur="checkEmpty(this)"> 
-    </label>
+<label>
+Birthday:
+<input type="date" name="birthday" required onblur="checkEmpty(this)">
+</label>
 
-    <label>
-        Email Address:
-        <input type="email" name="email" required onBlur="checkEmpty(this)"> 
-    </label>
-    </fieldset>
+<label>
+Email Address:
+<input type="email" name="email" required onblur="checkEmpty(this)">
+</label>
+</fieldset>
 
-    <!-- Fieldset for 5-8 -->
-    <fieldset>
-    <legend>Club Details</legend>
+<fieldset>
+<legend>Club Details</legend>
 
-    <label>
-        Mobile Phone:
-        <input type="text" name="mobile" required onBlur="checkEmpty(this)"> 
-    </label>
+<label>
+Mobile Phone:
+<input type="text" name="mobile" required onblur="checkEmpty(this)">
+</label>
 
-    <label>
-        Grade Level:
-        <select id="grade_level" name="gradelevel" required onBlur="checkEmpty(this)"> 
-        <option value =""> Select </option>
-        <option value ="G7"> Grade 7 </option>
-        <option value ="G8"> Grade 8 </option>
-        <option value ="G9"> Grade 9 </option>
-        <option value ="G10"> Grade 10 </option>
-        <option value ="G11"> Grade 11 </option>
-        <option value ="G12"> Grade 12</option>
-        </select>
-    </label>
+<label>
+Grade Level:
+<select name="gradelevel" required onblur="checkEmpty(this)">
+<option value="">Select</option>
+<option value="G7">Grade 7</option>
+<option value="G8">Grade 8</option>
+<option value="G9">Grade 9</option>
+<option value="G10">Grade 10</option>
+<option value="G11">Grade 11</option>
+<option value="G12">Grade 12</option>
+</select>
+</label>
 
     <label>
         Intern / Extern:
@@ -147,10 +165,10 @@
         <label for="extern">Extern</label>
         <input type="radio" id="extern" name="internorextern" value="Extern" required>
 
-    <label> 
+    <label>
         Preferred Organization / Club:
-        <select id="prefclub" name="club" required onBlur ="checkEmpty(this)">
-            <option value=""> Select </option>
+        <select name="club" required onblur="checkEmpty(this)">
+            <option value="">Select</option>
             <option value="Film">Celluloid</option>
             <option value="Swimming">Flux</option>
             <option value="Dance">SaGaLa</option>
@@ -160,16 +178,16 @@
     </label>
 
     <label>
-        Why do you want to join? :
-        <textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea>
+    Why do you want to join?
+    <textarea name="reason" rows="4" required onblur="checkEmpty(this)"></textarea>
     </label>
 
-    </fieldset>
+</fieldset>
 
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+<button type="button" onclick="viewSignUps()">View Signups</button>
 
-   </form>
-
-   </body>
-   </html>
+</form>
+</body>
+</html>
