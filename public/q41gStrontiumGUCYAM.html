@@ -161,12 +161,12 @@ input, select, textarea {
         const stars = document.querySelectorAll(".stars");
         const movieList = document.getElementById("movieList");
 
-
+    // Star rating click event
         stars.forEach((star, index)=> {
             star.addEventListener("click", () => {
                 currentRating = index + 1;
 
-                stars.forEach(s => s.style.filter = "grayscale(100%)");
+                stars.forEach(s => s.style.filter = "grayscale(100%)"); //Set all stars to grayscale first
                 for (let i = 0; i < currentRating; i++) {
                     stars[i].style.filter = "grayscale(0%)";
                 }
@@ -174,6 +174,7 @@ input, select, textarea {
 
         });
 
+    // Create movie object and save to local storage
     function addMovie() {
      const title = document.getElementById("movieTitle").value;
      const year = document.getElementById("movieYear").value;
@@ -191,26 +192,28 @@ input, select, textarea {
         rating: currentRating
      }
 
-     let movies = JSON.parse(localStorage.getItem("movies")) || []; //get array from local storage or create new array if empty
+     let movies = JSON.parse(localStorage.getItem("movies")) || []; // Get array from local storage or create new array if empty
      movies.push(newMovie);
-     localStorage.setItem("movies", JSON.stringify(movies)); //stringifed array back to local storage
+     localStorage.setItem("movies", JSON.stringify(movies)); // Stringifed array back to local storage
 
      displayMovies();
      clearForm();
 
     }
 
-    function displayMovies() { //read array from local storage and display on page
+    function displayMovies() { // Read array from local storage and display on page
         const movies = JSON.parse(localStorage.getItem("movies")) || [];
         const movieList = document.getElementById("movieList");
         movieList.innerHTML = "";
 
+        // Loop through each movie and display stars based on rating
         movies.forEach(movie => {
          let starDisplay = "";
             for (let i = 0; i < movie.rating; i++) {
                 starDisplay += "⭐";
             }
 
+        // Create div element for each movie and display title, year, genre and rating
             const div = document.createElement("div");
             div.className = "movie-item";
             div.innerHTML = `${movie.title} (${movie.year}) - ${movie.genre}, 
@@ -221,6 +224,8 @@ input, select, textarea {
         });
 
     }
+
+
 
     function clearForm() {
         document.getElementById("movieTitle").value = "";
