@@ -174,7 +174,7 @@ input, select, textarea {
 
         });
 
-    // Create movie object and save to local storage
+    // CREATE movie object and save to local storage
     function addMovie() {
      const title = document.getElementById("movieTitle").value;
      const year = document.getElementById("movieYear").value;
@@ -185,31 +185,46 @@ input, select, textarea {
         return;
      }
 
+     let movies = JSON.parse(localStorage.getItem("movies")) || []; // Get array from local storage or create new array if empty
+
+     const movieIndex = movies.findIndex(m => m.title.toLowerCase() === title.toLowerCase());
+
+          // If movie exists, UPDATE by getting average rating
+     if (movieIndex !== -1) {
+        const oldRating = parseFloat(movies[movieIndex].rating);
+        const averageRating = (oldRating + currentRating) / 2;
+
+        movies[movieIndex].year = year;
+        movies[movieIndex].genre = genre;
+        movies[movieIndex].rating = averageRating.toString();
+
+     } else {
+
      const newMovie = {
         title: title,
         year: year,
         genre: genre,
-        rating: currentRating
+        rating: currentRating.toString()
+     };
+     movies.push(newMovie);
+    
      }
 
-     let movies = JSON.parse(localStorage.getItem("movies")) || []; // Get array from local storage or create new array if empty
-     movies.push(newMovie);
-     localStorage.setItem("movies", JSON.stringify(movies)); // Stringifed array back to local storage
-
-     displayMovies();
-     clearForm();
+    localStorage.setItem("movies", JSON.stringify(movies)); // Stringifed array back to local storage
+    
+    displayMovies();
+    clearForm();
 
     }
 
-    function displayMovies() { // Read array from local storage and display on page
+    function displayMovies() { // READ array from local storage and display on page
         const movies = JSON.parse(localStorage.getItem("movies")) || [];
-        const movieList = document.getElementById("movieList");
         movieList.innerHTML = "";
 
         // Loop through each movie and display stars based on rating
-        movies.forEach(movie => {
+        movies.forEach((movie, index) => {
          let starDisplay = "";
-            for (let i = 0; i < movie.rating; i++) {
+            for (let i = 0; i < Math.round(parseFloat(movie.rating)); i++) {
                 starDisplay += "⭐";
             }
 
@@ -217,7 +232,7 @@ input, select, textarea {
             const div = document.createElement("div");
             div.className = "movie-item";
             div.innerHTML = `${movie.title} (${movie.year}) - ${movie.genre}, 
-            Rating: ${starDisplay}`;
+            Rating: ${starDisplay}` + `<button onclick="deleteMovie(${index})">Delete</button>`;
 
             movieList.appendChild(div);
 
@@ -225,13 +240,24 @@ input, select, textarea {
 
     }
 
+    // DELETE movie from local storage and UPDATE display
+    function deleteMovie(index) {
+        let userconfirm = confirm("Are you sure you want to delete?");
 
+        if (userconfirm) {
+            let movies = JSON.parse(localStorage.getItem("movies")) || [];
+            movies.splice(index, 1);
+            localStorage.setItem("movies", JSON.stringify(movies));
+            displayMovies();
+        }
+    }
 
+    // Reset all inputs
     function clearForm() {
         document.getElementById("movieTitle").value = "";
         document.getElementById("movieYear").value = "";
         currentRating = 0;
-        stars.forEach(s => s.style.color = "#6d82d7");
+        stars.forEach(s => s.style.filter = "grayscale(100%)");
     }
 
     displayMovies();
@@ -242,6 +268,7 @@ input, select, textarea {
             displayMovies();
         }
     }
+    
 
 
 </script>
