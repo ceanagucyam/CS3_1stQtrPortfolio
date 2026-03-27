@@ -99,13 +99,13 @@ Answer: Absolute positioning on an element is relative to the nearest positioned
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
-   - Static Positioning: The default positioning where elements appear normal with the default position value static.
-   - Relative Positioning: The element positioned is relative to its normal position, but can be changed using offset properties. 
-   - Absolute Positioning: The element positioned is relative to its nearest positioned ancestor.
-   - Fixed Positioning: The element positioned stays fixed in the viewport, making it stay in the same place even when scrolling.
+   - **Static Positioning:** The default positioning where elements appear normal with the default position value `static`.
+   - **Relative Positioning:** The element positioned is relative to its normal position, but can be changed using offset properties. 
+   - **Absolute Positioning:** The element positioned is relative to its nearest positioned ancestor.
+   - **Fixed Positioning:** The element positioned stays fixed in the viewport, making it stay in the same place even when scrolling.
 
     b. How does absolute positioning depend on its parent element?
-    The element with absolute positioning is removed from normal document flow and looks for its nearest parent (nearest positioned ancestor). If it finds a parent set to relative, absolute, or fixed, it uses the parent's edges as the starting point for its coordinates.
+    - The element with absolute positioning is removed from normal document flow and looks for its nearest parent (nearest positioned ancestor). If it finds a parent set to relative, absolute, or fixed, it uses the parent's edges as the starting point for its coordinates.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
 
