@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="author" content="<your names>" />
-  <meta name="revised" content="<date today>" />
+  <meta name="author" content="Ceana E. Gucyam & Patricia A. Santos" />
+  <meta name="revised" content="March 27, 2026" />
   <style>
     body { font-family: Arial, sans-serif; }
     .header, .footer {
@@ -13,18 +13,38 @@
       padding: 10px;
     }
     .footer {
+       position: fixed;
+       bottom: 0;
+       width: 100%;
        opacity: 0.5;
     }
     .sidebar {
+      position: relative;
+      top: 20px;
+      left: 20px;
       background: lightgreen;
       width: 150px;
       height: 200px;
     }
     .content {
+      position: absolute;
+      top: 66px;
+      left: 200px;
       background: lightyellow;
       width: 300px;
       height: 200px;
+      z-index: 1;
     }    
+
+    .notice {
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    background: orange;
+    padding: 10px;
+    z-index: 2;
+    }
+
   </style>
 </head>
 <body>
@@ -32,6 +52,8 @@
   <div class="sidebar">Sidebar</div>
   <div class="content">Main Content</div>
   <div class="footer">Footer</div>
+  <div class="notice">Notice!</div>
+
 </body>
 </html>
 ```
