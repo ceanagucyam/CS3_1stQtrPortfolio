@@ -97,8 +97,8 @@
     - The element with absolute positioning is removed from normal document flow and looks for its nearest parent (nearest positioned ancestor). If it finds a parent set to relative, absolute, or fixed, it uses the parent's edges as the starting point for its coordinates.
 
     c. How do you differentiate sticky from fixed (you can research on sticky)?
-   * **Fixed:** It is always stuck to the screen from the start. 
-* **Sticky:** It acts like relative until you scroll to a specific 
+   * **Fixed:** It is always stuck to the screen from the start.
+   *  **Sticky:** It acts like relative until you scroll to a specific 
 
     d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
   * I would use fixed positioning for a "Register Now" button or a "When is this event" reminder so it stays visible as users scrolls through the page, basically the buttons and information that are important for the user to see. I would use absolute positioning for updates or announcements like "New" and place it on the top corner to grab attention immediately.
