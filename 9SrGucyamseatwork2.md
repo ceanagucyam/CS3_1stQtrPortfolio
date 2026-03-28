@@ -133,7 +133,8 @@
 }
 ```
 
-    * Try to change the position of .content to relative then to fixed. What do you observed each time?
+  * Try to change the position of .content to relative then to fixed. What do you observed each time?
+
 ### 2. 
 * **Relative:** The content box stays below the sidebar, and the notice stays stuck to the content box's top-right corner.
 * **Fixed:** The yellow box "pops out"  and stays stuck to that specific part of the screen even when scrolling. The notice stays stuck to the corner of the yellow box.
