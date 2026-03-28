@@ -18,7 +18,6 @@
        width: 100%;
        opacity: 0.5;
     }
-
     .sidebar {
       position: relative;
       top: 20px;
@@ -27,21 +26,23 @@
       width: 150px;
       height: 200px;
     }
-
     .content {
-      position: absolute; 
+      position: absolute;
       top: 66px;
       left: 200px;
+      background: lightyellow;
       width: 300px;
       height: 200px;
       z-index: 1;
-    }   
+    }    
 
     .notice {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 2;
+    position: absolute;
+    top: 60px;
+    left: 400px;
+    background: orange;
+    padding: 10px;
+    z-index: 2;
     }
 
   </style>
