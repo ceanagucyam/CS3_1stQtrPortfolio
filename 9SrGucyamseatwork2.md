@@ -5,9 +5,14 @@
 <html>
 <head>
   <meta name="author" content="Ceana E. Gucyam & Patricia A. Santos" />
-  <meta name="revised" content="March 27, 2026" />
+  <meta name="revised" content="March 28, 2026" />
   <style>
-    body { font-family: Arial, sans-serif; }
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0;
+      height: 2000px; 
+    }
+    
     .header, .footer {
       background: lightblue;
       padding: 10px;
@@ -30,19 +35,19 @@
       position: absolute;
       top: 66px;
       left: 200px;
-      background: lightyellow;
       width: 300px;
       height: 200px;
+      background: lightyellow;
       z-index: 1;
     }    
 
     .notice {
-    position: absolute;
-    top: 60px;
-    left: 400px;
-    background: orange;
-    padding: 10px;
-    z-index: 2;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: orange;
+      padding: 10px;
+      z-index: 2;
     }
 
   </style>
@@ -102,7 +107,7 @@
 **What happens if you swap the z‑index values?**
 - If the values are swapped (Content: 2, Notice: 1), the  content box will cover the notice box. Since the notice is positioned  inside or over the content, it becomes hidden behind the yellow background.
   
-- Challenge: 
+## Challenge: 
 
  ### 1.      
  * **What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).**
