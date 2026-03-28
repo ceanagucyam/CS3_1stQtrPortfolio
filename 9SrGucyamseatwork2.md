@@ -61,21 +61,21 @@
 
 - Add in css ```position: relative; top: 20px; left: 20px;``` to .sidebar.
 
-- Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.
+ **Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.**
 - Answer: The sidebar changes its position using offset properties (top, bottom, right, or left) without affecting the layout of the other elements. The element is relative to its normal position.
 
 ### Step 2 (Fixed):
 
 - Add in css ```position: fixed; bottom: 0; width: 100%;``` to .footer.
 
-- Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?
+ **Guided Question: What happens when you scroll the page? Why does the footer behave differently from position relative?**
 - Answer: Relative elements move with the page as you scroll; meanwhile, for fixed elements, like the footer, it stays fixed in the viewport. 
 
 ### Step 3 (Absolute):
 
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
-- Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?
+**Guided Question: What is the effect of position: absolute on an element? How is it different from fixed?**
 - Answer: Absolute positioning on an element is relative to the nearest positioned ancestor, and moves when the ancestor or the page scrolls/moves. On the other hand, fixed positioning on an element stays fixed in the viewport, making it stay in the same place even when scrolling.
 
 ### Step 4 : (Absolute)
@@ -104,8 +104,44 @@
   
 - Challenge: 
     * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+ ### 1.  
+
+
+**HTML:**
+```html
+<div class="content">
+    Main Content
+    <div class="notice">Notice!</div>
+</div> 
+```
+**CSS:**
+``` css
+.content {
+    position: absolute; 
+    top: 66px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+    z-index: 1;
+}
+
+.notice {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+}
+```
+
     * Try to change the position of .content to relative then to fixed. What do you observed each time?
+### 2. 
+* **Relative:** The content box stays below the sidebar, and the notice stays stuck to the content box's top-right corner.
+* **Fixed:** The yellow box "pops out"  and stays stuck to that specific part of the screen even when scrolling. The notice stays stuck to the corner of the yellow box.
+
     * What do you observe on about the effect of z-index on .notice and .content boxes?
+### 3.
+* **Requirement:** The z-index only works on elements that have a position property, either relative, absolute, fixed, or sticky. 
+* **Stacking:** It creates a "layering" effect, and without it, elements usually stack based on their order in the HTML code (later elements appear on top). z-index allows us to override that order.
 
 3. Please answer the following reflection questions (15 minutes)
 
