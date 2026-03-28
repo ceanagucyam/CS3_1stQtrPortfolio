@@ -105,7 +105,7 @@
 - Challenge: 
 
  ### 1.      
- * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
+ * **What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).**
 
 
 **HTML:**
@@ -136,14 +136,13 @@
 
 
 ### 2. 
-  * Try to change the position of .content to relative then to fixed. What do you observed each time?
-
-* **Relative:** The content box stays below the sidebar, and the notice stays stuck to the content box's top-right corner.
-* **Fixed:** The yellow box "pops out"  and stays stuck to that specific part of the screen even when scrolling. The notice stays stuck to the corner of the yellow box.
+  * **Try to change the position of .content to relative then to fixed. What do you observed each time?**
+- **Relative:** The content box stays below the sidebar, and the notice stays stuck to the content box's top-right corner.
+- **Fixed:** The yellow box "pops out"  and stays stuck to that specific part of the screen even when scrolling. The notice stays stuck to the corner of the yellow box.
 
 
 ### 3.
-   * What do you observe on about the effect of z-index on .notice and .content boxes?
+   * **What do you observe on about the effect of z-index on .notice and .content boxes?**
 * **Requirement:** The z-index only works on elements that have a position property, either relative, absolute, fixed, or sticky. 
 * **Stacking:** It creates a "layering" effect, and without it, elements usually stack based on their order in the HTML code (later elements appear on top). z-index allows us to override that order.
 
