@@ -1,67 +1,5 @@
 # Seatwork #2 - Getting to know CSS Position and z-index.
 
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="author" content="Ceana E. Gucyam & Patricia A. Santos" />
-  <meta name="revised" content="March 30, 2026" />
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 0;
-      height: 2000px; 
-    }
-    
-    .header, .footer {
-      background: lightblue;
-      padding: 10px;
-    }
-    .footer {
-       position: fixed;
-       bottom: 0;
-       width: 100%;
-       opacity: 0.5;
-    }
-    .sidebar {
-      position: relative;
-      top: 20px;
-      left: 20px;
-      background: lightgreen;
-      width: 150px;
-      height: 200px;
-    }
-    .content {
-      position: absolute;
-      top: 66px;
-      left: 200px;
-      width: 300px;
-      height: 200px;
-      background: lightyellow;
-      z-index: 1;
-    }    
-
-    .notice {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background: orange;
-      padding: 10px;
-      z-index: 2;
-    }
-
-  </style>
-</head>
-<body>
-  <div class="header">Header</div>
-  <div class="sidebar">Sidebar</div>
-  <div class="content">Main Content</div>
-  <div class="footer">Footer</div>
-  <div class="notice">Notice!</div>
-
-</body>
-</html>
-```
 ## Step 1 (Static vs Relative):
 
 ### **Guided Question: What changed compared to the default static positioning? Try to give different values to top and left or you can change it to bottom, right.**
@@ -86,7 +24,7 @@
 
 ## Challenge: 
 
-###1. 
+### 1. 
 **HTML:**
 ```html
 <div class="content">
