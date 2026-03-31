@@ -25,7 +25,7 @@ nav {
     background-color: #333;
     position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
 }
 
 nav a {
